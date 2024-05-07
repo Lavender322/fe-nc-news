@@ -6,7 +6,6 @@ function ArticleSearch({ setArticles, setIsError, setIsLoading }) {
     getAllArticles()
       .then((res) => {
         setIsLoading(false);
-        console.log("res", res);
         setArticles(res.data.articles);
       })
       .catch((err) => {
