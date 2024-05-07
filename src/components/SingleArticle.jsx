@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../utils/api";
 import { MessageSquare, Clock } from "react-feather";
+import Comments from "./Comments";
 
 function SingleArticle() {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
-  const [articleCreatedAt, setArticleCreatedAt] = useState("");
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -15,8 +15,6 @@ function SingleArticle() {
       .then((res) => {
         setIsLoading(false);
         setArticle(res.data.article);
-        const parsedDate = new Date(res.data.article.created_at);
-        setArticleCreatedAt(parsedDate.toDateString());
       })
       .catch((err) => {
         setIsError(true);
@@ -36,7 +34,9 @@ function SingleArticle() {
       <p className="article-title">{article.title}</p>
       <p className="article-info">
         <Clock className="clock-icon" width={14} />
-        <span className="article-time">{articleCreatedAt}</span>
+        <span className="article-time">
+          {new Date(article.created_at).toDateString()}
+        </span>
         ·
         <MessageSquare className="article-comment-icon" width={14} />
         <span className="article-comments-count">{article.comment_count}</span>
@@ -47,8 +47,7 @@ function SingleArticle() {
       <img src={article.article_img_url} className="article-image" />
       <p className="article-author">By {article.author}</p>
       <p className="article-body">{article.body}</p>
-      <p></p>
-      <p></p>
+      <Comments />
     </article>
   );
 }

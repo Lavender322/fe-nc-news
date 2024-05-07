@@ -11,3 +11,7 @@ export function getAllArticles() {
 export function getArticleById(articleId) {
   return ncNewsAPI.get(`/articles/${articleId}`);
 }
+
+export function getCommentsByArticleId(articleId) {
+  return ncNewsAPI.get(`/articles/${articleId}/comments`);
+}
