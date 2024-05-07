@@ -7,7 +7,7 @@ function ArticleList({ articles, isError, isLoading }) {
 
   if (isLoading) {
     return (
-      <></>
+      <>Loading...</>
       // <Lottie className="loading-animation" animationData={hamsterAnimation} />
     );
   }
