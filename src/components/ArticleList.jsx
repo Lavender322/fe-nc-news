@@ -1,3 +1,5 @@
+import Lottie from "lottie-react";
+import groovyWalkAnimation from "../assets/groovyWalk.json";
 import ArticleItem from "./ArticleItem";
 
 function ArticleList({ articles, isError, isLoading }) {
@@ -6,10 +8,7 @@ function ArticleList({ articles, isError, isLoading }) {
   }
 
   if (isLoading) {
-    return (
-      <>Loading...</>
-      // <Lottie className="loading-animation" animationData={hamsterAnimation} />
-    );
+    return <Lottie animationData={groovyWalkAnimation} loop={true} />;
   }
 
   return (

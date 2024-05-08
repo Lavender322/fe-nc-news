@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById, patchArticleVote } from "../utils/api";
 import { MessageSquare, Clock, ThumbsUp, ThumbsDown } from "react-feather";
+import Lottie from "lottie-react";
+import groovyWalkAnimation from "../assets/groovyWalk.json";
 import Comments from "./Comments";
 
 function SingleArticle() {
@@ -32,7 +34,7 @@ function SingleArticle() {
   }
 
   if (isLoading) {
-    return <>Loading...</>;
+    return <Lottie animationData={groovyWalkAnimation} loop={true} />;
   }
 
   return (
