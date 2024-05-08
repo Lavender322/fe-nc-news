@@ -1,25 +1,6 @@
-import { useState, useEffect } from "react";
-import { getCommentsByArticleId } from "../utils/api";
-import { useParams } from "react-router-dom";
 import CommentItem from "./CommentItem";
 
-function CommentList() {
-  const { article_id } = useParams();
-  const [comments, setComments] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    getCommentsByArticleId(article_id)
-      .then((res) => {
-        setIsLoading(false);
-        setComments(res.data.comments);
-      })
-      .catch((err) => {
-        setIsError(true);
-      });
-  }, []);
-
+function CommentList({ comments, isError, isLoading }) {
   if (isError) {
     return <div>Error fetching comments</div>;
   }
@@ -30,7 +11,6 @@ function CommentList() {
 
   return (
     <ul>
-      <h1 className="comments-heading">{`Comments (${comments.length})`}</h1>
       {comments.map((comment) => {
         return <CommentItem comment={comment} key={comment.comment_id} />;
       })}

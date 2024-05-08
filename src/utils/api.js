@@ -21,3 +21,10 @@ export function patchArticleVote(articleId, newVote) {
     inc_votes: newVote,
   });
 }
+
+export function postComment(articleId, username, body) {
+  return ncNewsAPI.post(`/articles/${articleId}/comments`, {
+    username,
+    body,
+  });
+}
