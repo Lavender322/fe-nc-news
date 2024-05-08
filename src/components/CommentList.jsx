@@ -30,7 +30,7 @@ function CommentList() {
 
   return (
     <ul>
-      <h1 className="comments-heading">Comments</h1>
+      <h1 className="comments-heading">{`Comments (${comments.length})`}</h1>
       {comments.map((comment) => {
         return <CommentItem comment={comment} key={comment.comment_id} />;
       })}

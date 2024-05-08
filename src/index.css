@@ -3,9 +3,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* color-scheme: light dark; */
+  /* color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -49,10 +49,10 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 0;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -63,7 +63,7 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
 
 .outer-container {
   display: flex;
@@ -240,21 +240,46 @@ ul {
   margin: 0;
   text-align: right;
   font-size: 16px;
-}
-
-.comment-votes {
   display: flex;
   justify-content: flex-end;
 }
 
+.article-votes {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .thumbs-up-icon {
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .thumbs-down-icon {
   margin-left: 8px;
+  cursor: pointer;
+}
+
+.thumbs-up-icon:disabled,
+.thumbs-down-icon:disabled {
+  cursor: not-allowed;
+}
+
+.thumbs-up-icon:hover:not(:disabled) {
+  transform: scale(1.2);
+  color: green;
+}
+
+.thumbs-down-icon:hover:not(:disabled) {
+  transform: scale(1.2);
+  color: red;
 }
 
 .comments-heading {
   font-size: 24px;
+}
+
+.vote-btn {
+  padding: 0;
+  background-color: transparent;
+  border: none;
 }
