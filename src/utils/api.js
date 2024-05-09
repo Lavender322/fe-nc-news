@@ -28,3 +28,7 @@ export function postComment(articleId, username, body) {
     body,
   });
 }
+
+export function getAllTopics() {
+  return ncNewsAPI.get("/topics");
+}
