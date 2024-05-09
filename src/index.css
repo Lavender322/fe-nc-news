@@ -216,6 +216,14 @@ button:focus-visible {
     -5px -5px 10px 3px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   margin-bottom: 32px;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.comment-container.hidden-comment {
+  visibility: hidden;
+  opacity: 0;
 }
 
 ul {
@@ -240,10 +248,15 @@ ul {
   color: #141414;
 }
 
-.comment-votes {
+.comment-actions {
   margin: 0;
-  text-align: right;
   font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-votes {
+  text-align: right;
   display: flex;
   justify-content: flex-end;
 }
@@ -256,6 +269,14 @@ ul {
 .thumbs-up-icon {
   margin-right: 8px;
   cursor: pointer;
+}
+
+.trash-icon {
+  cursor: pointer;
+}
+
+.trash-icon:hover {
+  color: red;
 }
 
 .thumbs-down-icon {
@@ -374,4 +395,7 @@ ul {
   font-weight: 500;
   color: #fff;
   /* border-right: 1px solid #db7f7f; */
+
+.delete-container {
+  display: flex;
 }
