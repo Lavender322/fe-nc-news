@@ -32,3 +32,9 @@ export function postComment(articleId, username, body) {
 export function deleteComment(commentId) {
   return ncNewsAPI.delete(`/comments/${commentId}`);
 }
+
+export function getAllTopics() {
+  return ncNewsAPI.get("/topics");
+}
+
+
