@@ -28,3 +28,7 @@ export function postComment(articleId, username, body) {
     body,
   });
 }
+
+export function deleteComment(commentId) {
+  return ncNewsAPI.delete(`/comments/${commentId}`);
+}
