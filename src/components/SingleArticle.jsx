@@ -12,6 +12,7 @@ function SingleArticle() {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [voteChange, setVoteChange] = useState(0);
+  const [voteErr, setVoteErr] = useState(null);
 
   useEffect(() => {
     getArticleById(article_id)
@@ -25,8 +26,12 @@ function SingleArticle() {
   }, []);
 
   function handleVote(vote) {
+    setVoteErr(null);
     setVoteChange((currentVote) => currentVote + vote);
-    patchArticleVote(article_id, vote);
+    patchArticleVote(article_id, vote).catch((err) => {
+      setVoteChange((currentCount) => currentCount - vote);
+      setVoteErr("Something went wrong, please try again.");
+    });
   }
 
   if (isError) {
@@ -71,6 +76,7 @@ function SingleArticle() {
         >
           <ThumbsDown width={16} className="" />
         </button>
+        {voteErr && <p className="error">{voteErr}</p>}
       </p>
       <Comments />
     </article>
